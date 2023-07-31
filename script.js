@@ -23,6 +23,11 @@ function buttonClick(element) {
         case "8":
         case "9":
             //Add to running count
+            const symbol = formula.textContent.substring(formula.textContent.length - 1);
+            if (symbol == "=") {
+                solution.textContent = "";
+                formula.textContent = "";
+            }
             solution.textContent = solution.textContent + element.textContent;
             break;
         case ".":
@@ -47,40 +52,49 @@ function buttonClick(element) {
     return;
 }
 
-function operators(symbol) {
+
+function operators(opperation) {
+    const symbol = formula.textContent.substring(formula.textContent.length - 1);
+
     if (solution.textContent == "") {
+        if (formula.textContent == "") return;
+
         const num = parseFloat(formula.textContent);
-        formula.textContent = num + "" + symbol;
+        formula.textContent = num + " " + opperation;
         return;
     }
 
-    if (formula.textContent == "") {
-        formula.textContent = solution.textContent + "" + symbol;
+    if (formula.textContent == "" || symbol == "=") {
+        formula.textContent = solution.textContent + " " + opperation;
     }
     else {
-        const result = calculate(symbol);
-        formula.textContent = result + "" + symbol;
+        const result = calculate(opperation);
+        formula.textContent = result + " " + opperation;
     }
     
     solution.textContent = "";
 }
 
+
 function enter() {
     const text = formula.textContent;
     const symbol = text.substring(text.length - 1);
 
-    console.log(text);
+    if (symbol == "=") return; //possible repeat last option
+    
+
     if (text == "") return;
     const result = calculate(symbol);
 
-    formula.textContent = "";
+    formula.textContent += " " + solution.textContent + " =";
     solution.textContent = result;
 
 }
 
+
 function calculate(symbol) {
     const num1 = parseFloat(formula.textContent);
-    const num2 = parseFloat(solution.textContent)
+    const num2 = parseFloat(solution.textContent);
 
     switch (symbol){
         case "+":
@@ -97,6 +111,7 @@ function calculate(symbol) {
             break;
     }
 }
+
 
 function clear() {
     solution.textContent = "";
