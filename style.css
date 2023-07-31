@@ -37,7 +37,7 @@ body {
 }
 
 .result-box > * {
-    overflow-wrap: break-word;
+    overflow-wrap: break-all;
 }
 
 .result-box > #formula {
