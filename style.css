@@ -20,6 +20,7 @@ body {
     background-color: #525252;
     border-radius: 10px;
     width: 500px;
+    max-width: 95vw;
 }
 
 .result-box {
@@ -37,7 +38,7 @@ body {
 }
 
 .result-box > * {
-    overflow-wrap: break-all;
+    overflow-wrap:break-word;
 }
 
 .result-box > #formula {
