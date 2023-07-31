@@ -1,0 +1,121 @@
+:root {
+    /* block size to keep grid correct */
+    --block-size: 25;
+    --margin-size: 2;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #adadad;
+}
+
+.calculator {
+    background-color: #525252;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.result-box {
+    background-color: #fff;
+    margin: calc(var(--margin-size) * 2%);
+    margin-bottom: calc(var(--margin-size) * 3%);;
+    width: calc(var(--margin-size) * 4 - var(--margin-size) *2);
+    border-radius: 10px;
+    min-height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.result-box > * {
+    overflow-wrap: break-word;
+}
+
+.result-box > #formula {
+    font-size: 30px;
+    padding: 10px;
+}
+
+.result-box > #solution {
+    
+    font-size: 50px;
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: calc(var(--margin-size) * 1%);
+
+}
+
+.btn-container > * {
+    --single-size: calc(var(--block-size) - (var(--margin-size) * 2));
+    width: calc(var(--single-size) * 1%);
+    margin: calc(var(--margin-size) * 1%);
+    aspect-ratio: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btn-container > .double {
+    --double-size: calc(var(--block-size) * 2 - (var(--margin-size) * 2));
+    width: calc(var(--double-size) * 1%);
+    aspect-ratio: calc(var(--double-size) / var(--single-size));
+}
+
+.btn-container > .triple {
+    --triple-size: calc(var(--block-size) * 3 - (var(--margin-size) * 2));
+    width: calc(var(--triple-size) * 1%);
+    aspect-ratio: calc(var(--triple-size) / var(--single-size));
+}
+
+.btn-container > div button {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 30px;
+    background-color: #19d1ff;
+    border: 0px;
+    
+}
+
+.btn-container > div button:active {
+    border: 4px solid #164e5c;
+}
+
+.btn-container > .enter button {
+    background-color: #ff4f19;
+    border: 0px;
+}
+
+.btn-container > .enter button:active {
+    border: 4px solid #863820;
+}
+
+.btn-container > .clear button {
+    background-color: #ffe819;
+    border: 0px;
+}
+
+.btn-container > .clear button:active {
+    border: 4px solid #7a7118;
+}
