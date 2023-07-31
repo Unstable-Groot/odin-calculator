@@ -22,17 +22,11 @@ function buttonClick(element) {
         case "7":
         case "8":
         case "9":
-            //Add to running count
-            const symbol = formula.textContent.substring(formula.textContent.length - 1);
-            if (symbol == "=") {
-                solution.textContent = "";
-                formula.textContent = "";
-            }
-            solution.textContent = solution.textContent + element.textContent;
+            numbers(element);
             break;
         case ".":
             if (!solution.textContent.includes("."))
-                solution.textContent = solution.textContent + element.textContent;
+                numbers(element);
             break;
         case "+":
         case "-":
@@ -52,6 +46,14 @@ function buttonClick(element) {
     return;
 }
 
+function numbers(e) {
+    const symbol = formula.textContent.substring(formula.textContent.length - 1);
+    if (symbol == "=") {
+        solution.textContent = "";
+        formula.textContent = "";
+    }
+    solution.textContent = solution.textContent + e.textContent;
+}
 
 function operators(opperation) {
     const symbol = formula.textContent.substring(formula.textContent.length - 1);
@@ -71,7 +73,7 @@ function operators(opperation) {
         const result = calculate(opperation);
         formula.textContent = result + " " + opperation;
     }
-    
+
     solution.textContent = "";
 }
 
@@ -81,7 +83,7 @@ function enter() {
     const symbol = text.substring(text.length - 1);
 
     if (symbol == "=") return; //possible repeat last option
-    
+
 
     if (text == "") return;
     const result = calculate(symbol);
@@ -96,16 +98,16 @@ function calculate(symbol) {
     const num1 = parseFloat(formula.textContent);
     const num2 = parseFloat(solution.textContent);
 
-    switch (symbol){
+    switch (symbol) {
         case "+":
-            console.log(num1+num2)
+            console.log(num1 + num2)
             return (num1 + num2) + "";
         case "-":
             return (num1 - num2) + "";
         case "*":
             return (num1 * num2) + "";
         case "/":
-            return (num1/ num2) + "";
+            return (num1 / num2) + "";
         default:
             console.error("calculate() switch got to default case");
             break;
